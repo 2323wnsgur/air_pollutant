@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Air Quality Monitoring Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Air Quality Monitoring Dashboard</h1>
+        <p>Real-time data on temperature, humidity, and pollutant levels.</p>
+    </header>
+
+
+    <main>
+        <section id="data">
+            <h2>Real-Time Air Quality Data</h2>
+            <div class="data-cards">
+                <div class="card">Temperature: <span id="temperature">--</span> °C</div>
+                <div class="card">Humidity: <span id="humidity">--</span> %</div>
+                <div class="card">PM2.5: <span id="pm25">--</span> µg/m³</div>
+                <div class="card">PM10: <span id="pm10">--</span> µg/m³</div>
+                <div class="card">NOx: <span id="nox">--</span> ppb</div>
+                <div class="card">NH3: <span id="nh3">--</span> ppb</div>
+                <div class="card">CO2: <span id="co2">--</span> ppm</div>
+                <div class="card">SO2: <span id="so2">--</span> ppb</div>
+                <div class="card">VOC: <span id="voc">--</span> ppb</div>
+            </div>
+
+            <!-- Canvas elements for charts -->
+            <div class="charts">
+                <div class="chart-row">
+                    <canvas id="lineChart1"></canvas>
+                    <canvas id="lineChart2"></canvas>
+                </div>
+                <canvas id="barChart"></canvas>
+                <canvas id="doughnutChart"></canvas>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Air Quality Monitoring Dashboard. All rights reserved.</p>
+        <p>Weather data provided by <a href="https://openweathermap.org/" target="_blank" rel="noopener noreferrer">OpenWeatherMap</a></p>
+    </footer>
+
+    <!-- Load the JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,69 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header, nav, main, footer {
+    padding: 1rem;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2em;
+}
+
+nav a {
+    margin: 0 1em;
+    text-decoration: none;
+    color: #333;
+}
+
+.data-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.card {
+    background-color: #f4f4f4;
+    padding: 1rem;
+    border-radius: 5px;
+    width: 150px;
+    text-align: center;
+    color: #333;
+    font-weight: bold;
+}
+
+footer {
+    font-size: 0.9em;
+    color: #888;
+}
+
+@media (max-width: 600px) {
+    .data-cards {
+        flex-direction: column;
+    }
+}
+.charts {
+    display: flex;
+    flex-direction: column;
+    gap:5px; /* Space between rows */
+}
+
+.chart-row {
+    display: flex;
+    justify-content: space-around;
+    gap: 5px; /* Space between charts */
+}
+
+canvas {
+    width: 100%;
+    max-width: 700px; /* Adjust as needed */
+    height: 300px; /* Adjust as needed */
+}
