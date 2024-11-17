@@ -57,6 +57,28 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    function getAirQualityColor(value, type) {
+        // Define thresholds for pollutants (example: PM2.5)
+        const thresholds = {
+            pm25: { good: 0, moderate: 50, unhealthy: 100 },
+            pm10: { good: 0, moderate: 50, unhealthy: 150 },
+            nox: { good: 0, moderate: 100, unhealthy: 200 },
+            nh3: { good: 0, moderate: 25, unhealthy: 75 },
+            co2: { good: 0, moderate: 400, unhealthy: 1000 },
+            so2: { good: 0, moderate: 50, unhealthy: 100 },
+            voc: { good: 0, moderate: 100, unhealthy: 200 }
+        };
+
+        let color = 'green'; // Default to good air quality (green)
+        if (value > thresholds[type].unhealthy) {
+            color = 'red'; // Unhealthy
+        } else if (value > thresholds[type].moderate) {
+            color = 'yellow'; // Moderate
+        }
+
+        return color;
+    }
+
     // Function to update the charts with new data
     function updateCharts(data) {
         const currentTime = new Date().toLocaleTimeString();
@@ -81,9 +103,21 @@ document.addEventListener('DOMContentLoaded', () => {
         const pollutants = [data.pm25, data.pm10, data.nox, data.nh3, data.co2, data.so2, data.voc];
         barChart.data.datasets[0].data = pollutants;
         doughnutChart.data.datasets[0].data = pollutants;
-
+        
+        barChart.data.datasets[0].backgroundColor = pollutants.map((value, index) => {
+            const types = ['pm25', 'pm10', 'nox', 'nh3', 'co2', 'so2', 'voc'];
+            return getAirQualityColor(value, types[index]);
+        });
         barChart.update();
         doughnutChart.update();
+
+        document.getElementById('pm25').style.color = getAirQualityColor(data.pm25, 'pm25');
+        document.getElementById('pm10').style.color = getAirQualityColor(data.pm10, 'pm10');
+        document.getElementById('nox').style.color = getAirQualityColor(data.nox, 'nox');
+        document.getElementById('nh3').style.color = getAirQualityColor(data.nh3, 'nh3');
+        document.getElementById('co2').style.color = getAirQualityColor(data.co2, 'co2');
+        document.getElementById('so2').style.color = getAirQualityColor(data.so2, 'so2');
+        document.getElementById('voc').style.color = getAirQualityColor(data.voc, 'voc');
     }
 
     // Function to fetch and update data
