@@ -3,51 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Air Quality Monitoring Dashboard</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Weather and Air Quality Dashboard</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<body>
-    <header>
-        <h1>Air Quality Monitoring Dashboard</h1>
-        <p>Real-time data on temperature, humidity, and pollutant levels.</p>
-    </header>
+<body class="w3-light-grey">
+
+<div class="w3-container w3-center w3-padding-32">
+    <h2>Weather and Air Quality Dashboard</h2>
+    <p>Real-time data for Busan</p>
+</div>
+
+<div class="w3-row-padding w3-margin-top">
+    <div class="w3-third w3-center w3-padding">
+        <div class="w3-card w3-white w3-padding">
+            <p>Temperature: <span id="temperature">--</span> °C</p>
+        </div>
+    </div>
+
+    <div class="w3-third w3-center w3-padding">
+        <div class="w3-card w3-white w3-padding">
+            <p>Humidity: <span id="humidity">--</span> %</p>
+        </div>
+    </div>
 
 
-    <main>
-        <section id="data">
-            <h2>Real-Time Air Quality Data</h2>
-            <div class="data-cards">
-                <div class="card">Temperature: <span id="temperature">--</span> °C</div>
-                <div class="card">Humidity: <span id="humidity">--</span> %</div>
-                <div class="card">PM2.5: <span id="pm25">--</span> µg/m³</div>
-                <div class="card">PM10: <span id="pm10">--</span> µg/m³</div>
-                <div class="card">NOx: <span id="nox">--</span> ppb</div>
-                <div class="card">NH3: <span id="nh3">--</span> ppb</div>
-                <div class="card">CO2: <span id="co2">--</span> ppm</div>
-                <div class="card">SO2: <span id="so2">--</span> ppb</div>
-                <div class="card">VOC: <span id="voc">--</span> ppb</div>
-            </div>
 
-            <!-- Canvas elements for charts -->
-            <div class="charts">
-                <div class="chart-row">
-                    <canvas id="lineChart1"></canvas>
-                    <canvas id="lineChart2"></canvas>
-                </div>
-                <canvas id="barChart"></canvas>
-                <canvas id="doughnutChart"></canvas>
-            </div>
-        </section>
-    </main>
+    <div class="w3-third w3-center w3-padding">
+        <div class="w3-card w3-white w3-padding">
+            <p>PM2.5: <span id="pm25">--</span>ug/m^3</p>
+        </div> 
+    </div>
+    <div class="w3-third w3-center w3-padding">
+        <div class="w3-card w3-white w3-padding">
+            <p>PM10: <span id="pm10">--</span>ug/m^3</p>
+        </div> 
+    </div>
+    <div class="w3-third w3-center w3-padding">
+        <div class="w3-card w3-white w3-padding">
+            <p>NOx: <span id="nox">--</span>ug/m^3</p>  <!--no2-->
+        </div> 
+    </div>
+    <div class="w3-third w3-center w3-padding">
+        <div class="w3-card w3-white w3-padding">
+            <p>NH3: <span id="nh3">--</span>ug/m^3</p>
+        </div> 
+    </div>
+    <div class="w3-third w3-center w3-padding">
+        <div class="w3-card w3-white w3-padding">
+            <p>CO: <span id="co2">--</span>ug/m^3</p><!--co data, not co2-->
+        </div> 
+    </div>
+    <div class="w3-third w3-center w3-padding">
+        <div class="w3-card w3-white w3-padding">
+            <p>SO2: <span id="so2">--</span>ppb</p>
+        </div> 
+    </div>
+    <div class="w3-third w3-center w3-padding">
+        <div class="w3-card w3-white w3-padding">
+            <p>VOC: <span id="voc">--</span>ppb</p>
+        </div> 
+    </div>
+</div>
 
-    <footer>
-        <p>&copy; 2024 Air Quality Monitoring Dashboard. All rights reserved.</p>
-        <p>Weather data provided by <a href="https://openweathermap.org/" target="_blank" rel="noopener noreferrer">OpenWeatherMap</a></p>
-    </footer>
+<div class="w3-row-padding w3-margin-top">
+    <div class="w3-half">
+        <div class="w3-card">
+            <canvas id="lineChart1"></canvas>
+        </div>
+    </div>
+    <div class="w3-half">
+        <div class="w3-card">
+            <canvas id="lineChart2"></canvas>
+        </div>
+    </div>
+</div>
 
-    <!-- Load the JavaScript file -->
-    <script src="script.js"></script>
+<div class="w3-row-padding w3-margin-top">
+    <div class="w3-half">
+        <div class="w3-card">
+            <canvas id="barChart"></canvas>
+        </div>
+    </div>
+    <div class="w3-half">
+        <div class="w3-card">
+            <canvas id="doughnutChart"></canvas>
+        </div>
+    </div>
+</div>
+<footer class="w3-center w3-padding-16 w3-light-grey">
+    <p>&copy; 2024 Weather Dashboard. All rights reserved.</p>
+    <p>Powered by 
+        <a href="https://openweathermap.org/" target="_blank" rel="noopener">OpenWeatherMap</a>, 
+        <a href="https://www.w3schools.com/w3css/defaulT.asp" target="_blank" rel="noopener">w3</a>, and 
+        <a href="https://chartjs.org/" target="_blank" rel="noopener">Chart.js</a>.
+    </p>
+</footer>
+<script src="script.js"></script>
 </body>
 </html>
 

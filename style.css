@@ -9,7 +9,7 @@ body {
 }
 
 header, nav, main, footer {
-    padding: 1rem;
+    padding: 1rem;  
     text-align: center;
 }
 
@@ -50,10 +50,11 @@ footer {
         flex-direction: column;
     }
 }
+
 .charts {
     display: flex;
     flex-direction: column;
-    gap:5px; /* Space between rows */
+    gap: 5px; /* Space between rows */
 }
 
 .chart-row {
@@ -63,7 +64,11 @@ footer {
 }
 
 canvas {
-    width: 100%;
-    max-width: 700px; /* Adjust as needed */
-    height: 300px; /* Adjust as needed */
+    width: 100%; /* Full width of its container */
+    max-width: 1000px; /* Increase the maximum width */
+    height: 350px; /* Increase the height of the charts */
+}
+
+#lineChart1, #lineChart2 {
+    height: 350px; /* Adjust the height for these specific charts */
 }
