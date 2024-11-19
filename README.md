@@ -35,3 +35,4 @@ Technologies Used
 
 
 
+js파일의 2번째줄에 openweather APi 개인 키를 입력하세요
