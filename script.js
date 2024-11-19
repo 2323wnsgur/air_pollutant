@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const apiKey = ''; // Replace with your OpenWeather API key
+    const apiKey = '5d633e2a434ae27155c0f3f0c35e524c'
 
     // Initialize the canvas contexts for the charts
     const lineChartCtx1 = document.getElementById('lineChart1').getContext('2d');
