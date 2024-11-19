@@ -5,19 +5,28 @@ This project is a Weather and Air Quality Dashboard built using HTML, CSS (W3.CS
 
 The dashboard shows:
 
-1.Weather information (Temperature, Humidity)
-2.Air quality metrics (PM2.5, PM10, NOx, NH3, CO, SO2, VOC)
-3.Interactive charts (line, bar, and doughnut) for visual representation of data.
+  
+    1.Weather information (Temperature, Humidity)
+  
+    2.Air quality metrics (PM2.5, PM10, NOx, NH3, CO2, SO2, VOC)
+  
+    3.Interactive charts (line, bar, and doughnut) for visual representation of data.
+  
 
 
 
 
 Technologies Used
-  1.HTML5: Structure and layout of the dashboard.
-  2.CSS (W3.CSS): For styling and responsive design.
-  3.JavaScript: Fetching data and rendering charts.
-  4.Chart.js: For creating interactive and visually appealing charts.
-  5.External APIs:
+    
+    1.HTML5: Structure and layout of the dashboard.
+  
+    2.CSS (W3.CSS): For styling and responsive design.
+  
+    3.JavaScript: Fetching data and rendering charts.
+  
+    4.Chart.js: For creating interactive and visually appealing charts.
+  
+    5.External APIs:
     OpenWeatherMap for real-time weather data.
 
 
