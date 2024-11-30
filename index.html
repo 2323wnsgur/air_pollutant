@@ -5,93 +5,154 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather and Air Quality Dashboard</title>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<body class="w3-light-grey">
+<body class="w3-black">
+    <div class="w3-sidebar w3-bar-block  " style="width:140px;">
+        <h3 class="w3-bar-item">Hello Weather!</h3>
+        <br>
+    
+        <a href="index.html" class="w3-bar-item w3-button">Dashboard</a>
+        <a href="chart.html" class="w3-bar-item w3-button">Charts</a>
+        <a href="#" class="w3-bar-item w3-button">Air Quality</a>
+        <a href="#" class="w3-bar-item w3-button">Settings</a>
+    </div>
 
-<div class="w3-container w3-center w3-padding-32">
-    <h2>Weather and Air Quality Dashboard</h2>
-    <p>Real-time data for Busan</p>
+
+<div class="w3-container w3-right-align w3-padding-32">
+    <h2>Dashboard</h2>
+</div>
+
+<br>
+<br>
+<div class="w3-row-padding w3-margin-top">
+
+    <div class="w3-third w3-padding">
+        <div class="w3-card w3-padding" style="width: 150%; height: 300px; position: relative;">
+            <div class="w3-left-align">
+                <span id="time" style="font-size: 14px;">--:--</span>
+            </div>
+            <div class="w3-right-align">
+                <span id="weather">--  </span>
+            </div>
+            <div class="w3-left-align">
+                <span id="temperature"  style="font-size: 60px;">--</span> °C
+                <br>
+                Humidity: <span id="humidity" style="font-size: 30px;">--</span>%
+                <br>
+                Wind: <span id="windspeed" style="font-size: 30px;">--</span>m/s
+            </div>
+            
+            <img id="weather-image" src="" alt="Weather Image" style="position: absolute;">
+        </div>
+    </div>
+
+    <div class="w3-padding" style="width: 51%; position: absolute; right: 0; height: 50vh;"> <!-- Increased width -->
+        <div class="w3-card w3-padding" style="height: 100%; width:70%; position: relative;">
+            <h3 class="w3-left-align">Weather Satellite</h3>
+            <div id="satellite-map" style="width: 100%; height: 90%;"></div> <!-- Map width matches container -->
+        </div>
+    </div>
+    
+    
+</div>
+
+
+
+
+
+
+<div class="w3-row-padding w3-margin-top">
+<div class="w3-third custom-width w3-padding">
+    <div class="w3-card w3-padding" style="width: 93%">
+        <div class="w3-left-align">PM2.5</div>
+        <br>
+        <div class="w3-right-align">
+            <span id="pm25" style="font-size: 20px">--</span> ug/m<sup>3</sup>
+        </div>
+    </div>
+</div>
+<div class="w3-third custom-width w3-padding">
+    <div class="w3-card w3-padding" style="width: 93%">
+        <div class="w3-left-align">PM10</div>
+        <br>
+        <div class="w3-right-align">
+            <span id="pm10" style="font-size: 20px">--</span> ug/m<sup>3</sup>
+        </div>
+    </div>
+</div>
+<div class="w3-third custom-width w3-padding">
+    <div class="w3-card w3-padding" style="width: 93%">
+        <div class="w3-left-align">NOx</div>
+        <br>
+        <div class="w3-right-align">
+            <span id="nox" style="font-size: 20px">--</span> ug/m<sup>3</sup>
+        </div>
+    </div>
+</div>
 </div>
 
 <div class="w3-row-padding w3-margin-top">
-    <div class="w3-third w3-center w3-padding">
-        <div class="w3-card w3-white w3-padding">
-            <p>Temperature: <span id="temperature">--</span> °C</p>
-        </div>
-    </div>
-
-    <div class="w3-third w3-center w3-padding">
-        <div class="w3-card w3-white w3-padding">
-            <p>Humidity: <span id="humidity">--</span> %</p>
-        </div>
-    </div>
-
-
-
-    <div class="w3-third w3-center w3-padding">
-        <div class="w3-card w3-white w3-padding">
-            <p>PM2.5: <span id="pm25">--</span>ug/m^3</p>
+    <div class="w3-third custom-width w3-center w3-padding">
+        <div class="w3-card  w3-padding" style="width: 93%">
+            <div class="w3-left-align">NH3</div>
+            <br>
+            <div class="w3-right-align">
+                <span id="nh3" style="font-size: 20px">--</span> ug/m<sup>3</sup>
+            </div>
         </div> 
     </div>
-    <div class="w3-third w3-center w3-padding">
-        <div class="w3-card w3-white w3-padding">
-            <p>PM10: <span id="pm10">--</span>ug/m^3</p>
+    <div class="w3-third custom-width w3-center w3-padding">
+        <div class="w3-card  w3-padding" style="width: 93%">
+            <div class="w3-left-align">CO</div>
+            <br>
+            <div class="w3-right-align">
+                <span id="co2" style="font-size: 20px">--</span> ug/m<sup>3</sup>
+            </div>
+            <!--co data, not co2-->
         </div> 
     </div>
-    <div class="w3-third w3-center w3-padding">
-        <div class="w3-card w3-white w3-padding">
-            <p>NOx: <span id="nox">--</span>ug/m^3</p>  <!--no2-->
-        </div> 
-    </div>
-    <div class="w3-third w3-center w3-padding">
-        <div class="w3-card w3-white w3-padding">
-            <p>NH3: <span id="nh3">--</span>ug/m^3</p>
-        </div> 
-    </div>
-    <div class="w3-third w3-center w3-padding">
-        <div class="w3-card w3-white w3-padding">
-            <p>CO: <span id="co2">--</span>ug/m^3</p><!--co data, not co2-->
-        </div> 
-    </div>
-    <div class="w3-third w3-center w3-padding">
-        <div class="w3-card w3-white w3-padding">
-            <p>SO2: <span id="so2">--</span>ppb</p>
-        </div> 
-    </div>
-    <div class="w3-third w3-center w3-padding">
-        <div class="w3-card w3-white w3-padding">
-            <p>VOC: <span id="voc">--</span>ppb</p>
+    <div class="w3-third custom-width  w3-padding">
+        <div class="w3-card  w3-padding" style="width: 93%">
+            <div class="w3-left-align">SO<sup>2</sup></div>
+            <br>
+            <div class="w3-right-align">
+                <span id="so2" style="font-size: 20px">--</span> ppb
+            </div>
         </div> 
     </div>
 </div>
-
 <div class="w3-row-padding w3-margin-top">
-    <div class="w3-half">
-        <div class="w3-card">
-            <canvas id="lineChart1"></canvas>
-        </div>
-    </div>
-    <div class="w3-half">
-        <div class="w3-card">
-            <canvas id="lineChart2"></canvas>
-        </div>
-    </div>
-</div>
-
-<div class="w3-row-padding w3-margin-top">
-    <div class="w3-half">
-        <div class="w3-card">
-            <canvas id="barChart"></canvas>
-        </div>
-    </div>
-    <div class="w3-half">
-        <div class="w3-card">
-            <canvas id="doughnutChart"></canvas>
-        </div>
+    <div class="w3-third w3-center w3-padding">
+        <div class="w3-card  w3-padding" style="width: 93%">
+            <div class="w3-left-align">O<sup>3</sup></div>
+            <br>
+            <div class="w3-right-align">
+                <span id="voc" style="font-size: 20px">--</span> ppb
+            </div>
+        </div> 
     </div>
 </div>
-<footer class="w3-center w3-padding-16 w3-light-grey">
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<footer class="w3-center w3-padding-16 w3-black">
     <p>&copy; 2024 Weather Dashboard. All rights reserved.</p>
     <p>Powered by 
         <a href="https://openweathermap.org/" target="_blank" rel="noopener">OpenWeatherMap</a>, 

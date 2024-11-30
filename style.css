@@ -1,55 +1,36 @@
-* {
-    box-sizing: border-box;
+
+.w3-sidebar {
+    transition: all 0.3s ease-in-out;
+    display:block;
+    background-color: #1c1a1a; /* 어두운 회색 */
+
 }
 
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+
+
+.weather-box {
+    width: 100%; /* 또는 원하는 비율 예: 80% */
+    margin: auto; /* 중앙 정렬 */
+    padding: 20px;
 }
 
-header, nav, main, footer {
-    padding: 1rem;  
-    text-align: center;
+.w3-card {
+    display:flex;
+    background-color: #151515; /* 배경 투명 */
+    margin-left: 200px;
+
+    flex-direction: column; /* 콘텐츠를 세로로 정렬 */
+    color: #ffffff; /* 글씨 흰색 */
+    border-radius: 5px; /* 테두리 모서리 둥글게 */
+
+    text-align: center; /* 텍스트 가운데 정렬 */
+    width: 200px; /* 너비 설정 */
+    height: 100px; /* 높이 설정 */
+    padding: 5px; /* 내부 여백 */
 }
 
-header h1 {
-    font-size: 2em;
-}
 
-nav a {
-    margin: 0 1em;
-    text-decoration: none;
-    color: #333;
-}
 
-.data-cards {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
-}
-
-.card {
-    background-color: #f4f4f4;
-    padding: 1rem;
-    border-radius: 5px;
-    width: 150px;
-    text-align: center;
-    color: #333;
-    font-weight: bold;
-}
-
-footer {
-    font-size: 0.9em;
-    color: #888;
-}
-
-@media (max-width: 600px) {
-    .data-cards {
-        flex-direction: column;
-    }
-}
 
 .charts {
     display: flex;
@@ -63,12 +44,32 @@ footer {
     gap: 5px; /* Space between charts */
 }
 
-canvas {
-    width: 100%; /* Full width of its container */
-    max-width: 1000px; /* Increase the maximum width */
-    height: 350px; /* Increase the height of the charts */
-}
+
 
 #lineChart1, #lineChart2 {
     height: 350px; /* Adjust the height for these specific charts */
+}
+
+
+
+#weather-image {
+    position: absolute;       /* 부모 요소(w3-card)를 기준으로 위치 지정 */
+    top: 50%;                /* 세로 중심 */
+    right: 10px;             /* 카드의 오른쪽에서 10px 떨어짐 */
+    transform: translateY(-50%); /* 세로 중심 보정 */
+    max-width: 300px;         /* 이미지 크기 제한 */
+    width: 250px;
+    height: auto;            /* 이미지 비율 유지 */
+}
+
+/* Reduce the gap between PM2.5 and PM10 */
+
+.custom-width {
+    width: 16.8% !important; /* Reduce the width of this specific column */
+}
+
+
+
+.w3-third {
+    width: 33.33333%; /* Default width remains intact for other w3-third elements */
 }
