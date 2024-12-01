@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather and Air Quality Dashboard</title>
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
-<body >
-    <div class="w3-sidebar" style="width:140px;">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Weather and Air Quality Dashboard</title>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="style2.css">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    </head>
+<body class="w3-black">
+    <div class="w3-sidebar w3-bar-block  " style="width:140px;">
         <h3 class="w3-bar-item">Hello Weather!</h3>
+        <br>
+    
         <a href="index.html" class="w3-bar-item w3-button">Dashboard</a>
         <a href="chart.html" class="w3-bar-item w3-button">Charts</a>
         <a href="#" class="w3-bar-item w3-button">Air Quality</a>
@@ -18,12 +22,45 @@
     </div>
 
 
-<div class="w3-container w3-center w3-padding-32">
-    <h2>Weather and Air Quality Dashboard</h2>
-    <p>Real-time data for Busan</p>
-</div>
-
-
+<div class=" ">
+        <label for="location-select">Select Location:</label>
+        <select id="location-select" onchange="updateLocationFromDropdown()">
+            <option value="" disabled selected>Choose a location</option>
+            <!-- Global cities -->
+            <option value="35.6895,139.6917">Tokyo, Japan</option>
+            <option value="37.7749,-122.4194">San Francisco, USA</option>
+            <option value="51.5074,-0.1278">London, UK</option>
+            <option value="40.7128,-74.0060">New York, USA</option>
+            <option value="48.8566,2.3522">Paris, France</option>
+            <option value="55.7558,37.6173">Moscow, Russia</option>
+            <option value="34.0522,-118.2437">Los Angeles, USA</option>
+            <option value="39.9042,116.4074">Beijing, China</option>
+            <option value="28.6139,77.2090">New Delhi, India</option>
+            <option value="-33.8688,151.2093">Sydney, Australia</option>
+    
+            <!-- Korean cities -->
+            <option value="37.5665,126.9780">Seoul, South Korea</option>
+            <option value="35.1796,129.0756">Busan, South Korea</option>
+            <option value="35.1595,126.8526">Gwangju, South Korea</option>
+            <option value="35.5384,129.3114">Ulsan, South Korea</option>
+            <option value="36.3504,127.3845">Daejeon, South Korea</option>
+            <option value="35.9078,128.6025">Daegu, South Korea</option>
+            <option value="33.4996,126.5312">Jeju, South Korea</option>
+    
+            <!-- Other cities -->
+            <option value="1.3521,103.8198">Singapore, Singapore</option>
+            <option value="-22.9068,-43.1729">Rio de Janeiro, Brazil</option>
+            <option value="-34.6037,-58.3816">Buenos Aires, Argentina</option>
+            <option value="19.0760,72.8777">Mumbai, India</option>
+            <option value="25.276987,55.296249">Dubai, UAE</option>
+            <option value="31.2304,121.4737">Shanghai, China</option>
+            <option value="41.9028,12.4964">Rome, Italy</option>
+            <option value="-37.8136,144.9631">Melbourne, Australia</option>
+        </select>
+    </div>
+    <div class="w3-container w3-right-align w3-padding-32">
+        <h2>Charts</h2>
+    </div>
 <div class="w3-row-padding w3-margin-top">
     <div class="w3-half">
         <div class="w3-card">
@@ -48,8 +85,23 @@
             <canvas id="doughnutChart"></canvas>
         </div>
     </div>
-</div>
-<footer class="w3-center w3-padding-16 w3-light-grey">
+</div><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<footer class="w3-center w3-padding-16 w3-black">
     <p>&copy; 2024 Weather Dashboard. All rights reserved.</p>
     <p>Powered by 
         <a href="https://openweathermap.org/" target="_blank" rel="noopener">OpenWeatherMap</a>, 
