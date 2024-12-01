@@ -2,18 +2,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const apiKey = '5d633e2a434ae27155c0f3f0c35e524c'
 
 
-    const map = L.map('satellite-map').setView([35.1796, 129.0756], 5); // Adjust coordinates and zoom level as needed
+    const map = L.map('satellite-map').setView([35.1796, 129.0756], 3); // Default to Busan
 
-    // Add the satellite tile layer
+    // Add tile layer to the map
     L.tileLayer(`https://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid=${apiKey}`, {
         maxZoom: 18,
         attribution: '&copy; <a href="https://openweathermap.org/">OpenWeatherMap</a>'
     }).addTo(map);
-    
 
-    // Optional: Add a marker to show the user's location
-    L.marker([35.1796, 129.0756]).addTo(map).bindPopup('Current Location').openPopup();
-
+    // Initialize a variable for the marker
+    let marker;
 
     // Initialize the canvas contexts for the charts
     /*const lineChartCtx1 = document.getElementById('lineChart1').getContext('2d');
@@ -135,7 +133,83 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 // 날짜 생성 (YYYYMMDD 형식)    
+function updateData(lat, lon) {
+    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`)
+        .then(response => response.json())
+        .then(weatherData => {
+            if (weatherData) {
+                // Update weather information
+                document.getElementById('temperature').textContent = weatherData.main.temp;
+                document.getElementById('humidity').textContent = weatherData.main.humidity;
+                document.getElementById('weather').textContent = weatherData.weather[0].description;
+                document.getElementById('windspeed').textContent = weatherData.wind.speed;
 
+                // Update weather icon
+                const iconCode = weatherData.weather[0].icon;
+                const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
+                const weatherImage = document.getElementById('weather-image');
+                weatherImage.src = iconUrl;
+                weatherImage.style.display = "block";
+
+                // Update local time for the location
+                const timezoneOffset = weatherData.timezone; // Timezone offset in seconds
+                updateLocalTime(timezoneOffset);
+
+                // Fetch and update air quality data
+                fetch(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${apiKey}`)
+                    .then(response => response.json())
+                    .then(airData => {
+                        if (airData) {
+                            const airComponents = airData.list[0].components;
+                            document.getElementById('pm25').textContent = airComponents.pm2_5;
+                            document.getElementById('pm10').textContent = airComponents.pm10;
+                            document.getElementById('nox').textContent = airComponents.no2;
+                            document.getElementById('nh3').textContent = airComponents.nh3;
+                            document.getElementById('co2').textContent = airComponents.co;
+                            document.getElementById('so2').textContent = airComponents.so2;
+                            document.getElementById('voc').textContent = airComponents.o3;
+                        }
+                    })
+                    .catch(error => console.error('Error fetching air pollution data:', error));
+            }
+        })
+        .catch(error => console.error('Error fetching weather data:', error));
+}
+
+// Function to update local time
+function updateLocalTime(offsetInSeconds) {
+    const nowUTC = new Date().getTime() + new Date().getTimezoneOffset() * 60000; // Current UTC time in milliseconds
+    const localTime = new Date(nowUTC + offsetInSeconds * 1000); // Apply timezone offset
+    const timeElement = document.getElementById('time');
+    timeElement.textContent = localTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+}
+
+// Function to handle location updates from dropdown
+function updateLocationFromDropdown() {
+    const selectedValue = document.getElementById('location-select').value;
+    if (selectedValue) {
+        const [lat, lon] = selectedValue.split(',').map(coord => parseFloat(coord));
+
+        // Update map view to new location
+        map.setView([lat, lon], 10);
+
+        // Update marker position
+        if (marker) {
+            map.removeLayer(marker); // Remove existing marker
+        }
+        marker = L.marker([lat, lon]).addTo(map).bindPopup(`Location Updated`).openPopup();
+
+        // Update weather and air quality data
+        updateData(lat, lon);
+    }
+}
+
+// Initial data update (default location: Busan)
+updateData(35.1796, 129.0756);
+
+// Expose function globally for use in the HTML
+window.updateLocationFromDropdown = updateLocationFromDropdown;
+/*
 const weatherImages = {
     "clear sky": "images/clear_sky.png",
     "few clouds": "images/few_clouds.png",
@@ -232,7 +306,7 @@ function updateDateTime() {
     // Update data every 10 seconds
     setInterval(updateData, 10000);
     setInterval(updateDateTime, 1000);
-    updateDateTime();
+    updateDateTime(); */
 });
 
 
