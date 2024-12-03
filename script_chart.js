@@ -1,3 +1,5 @@
+
+
 document.addEventListener('DOMContentLoaded', () => {
     const apiKey = '5d633e2a434ae27155c0f3f0c35e524c';
 
@@ -18,6 +20,31 @@ document.addEventListener('DOMContentLoaded', () => {
                 borderColor: 'rgb(255, 99, 132)',
                 fill: false
             }]
+        },
+        options: {
+            scales: {
+                x: {
+                    ticks: {
+                        color: 'white' // X-axis label color
+                    }
+                },
+                y: {
+                    ticks: {
+                        color: 'white' // Y-axis label color
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    labels: {
+                        color: 'white' // Legend text color
+                    }
+                },
+                tooltip: {
+                    bodyColor: 'white', // Tooltip text color
+                    titleColor: 'white' // Tooltip title color
+                }
+            }
         }
     });
 
@@ -31,6 +58,31 @@ document.addEventListener('DOMContentLoaded', () => {
                 borderColor: 'rgb(54, 162, 235)',
                 fill: false
             }]
+        },
+        options: {
+            scales: {
+                x: {
+                    ticks: {
+                        color: 'white' // X-axis label color
+                    }
+                },
+                y: {
+                    ticks: {
+                        color: 'white' // Y-axis label color
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    labels: {
+                        color: 'white' // Legend text color
+                    }
+                },
+                tooltip: {
+                    bodyColor: 'white', // Tooltip text color
+                    titleColor: 'white' // Tooltip title color
+                }
+            }
         }
     });
 
@@ -43,6 +95,31 @@ document.addEventListener('DOMContentLoaded', () => {
                 data: [],
                 backgroundColor: ['red', 'orange', 'yellow', 'green', 'blue', 'purple', 'brown']
             }]
+        },
+        options: {
+            scales: {
+                x: {
+                    ticks: {
+                        color: 'white' // X-axis label color
+                    }
+                },
+                y: {
+                    ticks: {
+                        color: 'white' // Y-axis label color
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    labels: {
+                        color: 'white' // Legend text color
+                    }
+                },
+                tooltip: {
+                    bodyColor: 'white', // Tooltip text color
+                    titleColor: 'white' // Tooltip title color
+                }
+            }
         }
     });
 
@@ -54,6 +131,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 data: [],
                 backgroundColor: ['red', 'orange', 'yellow', 'green', 'blue', 'purple', 'brown']
             }]
+        },
+        options: {
+            plugins: {
+                legend: {
+                    labels: {
+                        color: 'white' // Legend text color
+                    }
+                },
+                tooltip: {
+                    bodyColor: 'white', // Tooltip text color
+                    titleColor: 'white' // Tooltip title color
+                }
+            }
         }
     });
 
