@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const barChart = new Chart(barChartCtx, {
         type: 'bar',
         data: {
-            labels: ['PM2.5', 'PM10', 'NOx', 'NH3', 'CO2', 'SO2', 'O3'],
+            labels: ['PM2.5', 'PM10', 'NOx', 'NH3', 'CO', 'SO2', 'O3'],
             datasets: [{
                 label: 'Pollutant Levels',
                 data: [],
@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const doughnutChart = new Chart(doughnutChartCtx, {
         type: 'doughnut',
         data: {
-            labels: ['PM2.5', 'PM10', 'NOx', 'NH3', 'CO2', 'SO2', 'O3'],
+            labels: ['PM2.5', 'PM10', 'NOx', 'NH3', 'CO', 'SO2', 'O3'],
             datasets: [{
                 data: [],
                 backgroundColor: ['red', 'orange', 'yellow', 'green', 'blue', 'purple', 'brown']
